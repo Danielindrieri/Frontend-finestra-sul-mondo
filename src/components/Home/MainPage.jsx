@@ -1,16 +1,28 @@
 import React from 'react'
-import Photo1 from '../assets/Photo1.jpeg'
-import Photo2 from '../assets/Photo2.jpeg'
-import Photo3 from '../assets/Photo3.jpeg'
-import Photo5 from '../assets/Photo5.jpeg'
-import Photo6 from '../assets/Photo6.jpeg'
-import Photo7 from '../assets/Photo7.jpeg'
+import Photo1 from '../../assets/Photo1.jpeg'
+import Photo2 from '../../assets/Photo2.jpeg'
+import Photo3 from '../../assets/Photo3.jpeg'
+import Photo5 from '../../assets/Photo5.jpeg'
+import Photo6 from '../../assets/Photo6.jpeg'
+import Photo7 from '../../assets/Photo7.jpeg'
 import {FaGlobeEurope} from 'react-icons/fa'
-import SfondoPagina from '../assets/SfondoPagina.jpg'
-import viaggio from '../assets/viaggio.mp4'
+import SfondoPagina from '../../assets/SfondoPagina.jpg'
+import viaggio from '../../assets/viaggio.mp4'
 import Card from 'react-bootstrap/Card'
+import {useNavigate} from 'react-router-dom'
+import { useAuth } from '../Protected/AuthContext';
 
 const MainPage = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const handleItineraryClick = () => {
+    if(user?.role === 'admin') {
+      navigate('/admin/itinerari'); 
+    } else {
+      navigate('/itinerari'); 
+    }
+  };
   return (
     <div className="container-fluid adjust p-0 m-0">
       {/* Seconda riga: Video */}
@@ -27,7 +39,9 @@ const MainPage = () => {
             Pianifica la tua avventura con i nostri itinerari esclusivi e
             consigli di viaggio! 🗺️🌟
           </p>
-          <button className="video-button">Portami li</button>
+          <button className="video-button" onClick={handleItineraryClick}>
+            Portami li
+          </button>
         </div>
       </div>
 

@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { jwtDecode } from 'jwt-decode'
+import {useAuth} from '../Protected/AuthContext'
 import SfondoPagina from '../../assets/SfondoPagina.jpg'
 
 const Login = () => {
@@ -8,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const {login} = useAuth()
   const navigate = useNavigate()
 
   const handleRegisterClick = () => {
@@ -15,17 +18,35 @@ const Login = () => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
-
-    const user = {username: userName, password: password}
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+  
+    const user = { username: userName, password: password };
     axios
       .post('http://localhost:8080/api/auth/login', user)
       .then((res) => {
         if (res.data.token) {
-          localStorage.setItem('token', res.data.token)
-          navigate('/')
+          const token = res.data.token;
+          localStorage.setItem('token', token);
+
+          const decodedToken = jwtDecode(token); 
+          console.log("Token decodificato:", decodedToken);
+  
+          
+          const backendRole = decodedToken.roles[0]; 
+          const cleanRole = backendRole.replace("ROLE_", "").trim().toLowerCase();
+          const username = decodedToken.sub;
+  
+          const userData = {
+            token: token,
+            role: cleanRole, 
+            username: username 
+          };
+  
+          localStorage.setItem('user', JSON.stringify(userData));
+          login(userData);
+          navigate('/');
         } else {
           setError('Token non valido o mancante')
         }
