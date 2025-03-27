@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 import LogoFinestra from '../../assets/LogoFinestra.jpg'
-import Photo8 from '../../assets/Photo8.jpeg'
+import SfondoList from '../../assets/SfondoList.jpg'
 
 const HeaderNavBar = () => {
   const [user, setUser] = useState(null)
@@ -45,7 +45,7 @@ const HeaderNavBar = () => {
         <div className="container-fluid">
           <a className="navbar-brand" id="contain-logo">
             <p id="Finestra">Finestra sul</p>
-            <img id="logo" src={LogoFinestra} alt="logoPage" />
+            <img id="logo" src={LogoFinestra} alt="logoPage"  onClick={() => navigate('/')}/>
           </a>
           <button
             className="navbar-toggler"
@@ -92,7 +92,7 @@ const HeaderNavBar = () => {
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
         style={{
-          backgroundImage: `url(${Photo8})`,
+          backgroundImage: `url(${SfondoList})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}>

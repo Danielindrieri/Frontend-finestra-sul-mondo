@@ -15,6 +15,7 @@ const ItineraryDetailsAdmin = () => {
     submit,
     removeItemFromList 
   } = useItinerarioForm()
+  
 
   return (
     <div className="admin-container">
@@ -22,8 +23,10 @@ const ItineraryDetailsAdmin = () => {
       </Link>
 
       <form onSubmit={submit} className="admin-form">
-        {/* Sezione Hero */}
         <div className="form-hero">
+        <Link to="/itinerari" className="back-link">
+        <i className="fas fa-arrow-left"></i> Torna alla lista
+      </Link>
           <label htmlFor="image-upload" className="image-upload-label">
             {form.immagini.length > 0 ? (
               <img

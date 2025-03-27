@@ -52,7 +52,7 @@ const MainPage = () => {
           backgroundImage: `url(${SfondoPagina})`,
         }}>
         {/* Prima colonna: Carousel */}
-        <div className="col-6 mb-4 z-2">
+        <div className="col-6 mb-4 sm-2 z-2">
           <div
             id="customCarousel"
             className="carousel slide"

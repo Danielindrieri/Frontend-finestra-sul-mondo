@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -46,7 +47,7 @@ h5:hover {
 }
 .sider {
   background-color: transparent;
-  color: orange;
+  color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -264,6 +265,81 @@ p,
 
 .video-button:hover {
   background-color: #ffb25d;
+}
+@media (max-width: 768px) {
+  .background-style .row {
+    display: block;
+  }
+  
+  .background-style .col-6 {
+    width: 100%;
+    float: none;
+    margin-bottom: 2rem;
+  }
+
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 16/9; 
+  }
+
+  .carousel-item {
+    width: 100%;
+    height: 100%; 
+    transition: transform 0.6s ease;
+  }
+
+  .foto-slide {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .photos {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center; 
+  }
+
+  .carousel-indicators {
+    bottom: 15px;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    margin: 0 4px;
+  }
+
+  .carousel-indicators .active {
+    background-color: #FFA320;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-inner {
+    aspect-ratio: 1;
+  }
+
+  .photos {
+    object-position: center top;
+  }
+
+  .gradiente {
+    min-height: auto;
+    padding: 1rem;
+  }
 }
 
 /* Login/Register */
@@ -495,6 +571,12 @@ object-fit: cover;
 }
 /* ItineraryDetails/List */
 
+.img-list {
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+}
+
 .itinerary-list-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -620,7 +702,7 @@ object-fit: cover;
   color: #666;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .itinerary-list-container {
     padding: 1rem;
@@ -660,7 +742,7 @@ object-fit: cover;
 
 .detail-hero {
   position: relative;
-  height: 400px;
+  height: 500px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 3rem;
@@ -698,44 +780,73 @@ object-fit: cover;
 }
 
 .detail-location {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   display: flex;
+  color: #FFA320;
   align-items: center;
   gap: 0.5rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Resto del CSS esistente mantenuto */
+
 .detail-content-section {
   background: #ffffff;
-  padding: 2rem;
-  margin: 2rem 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+  margin: 2.5rem 0;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-content-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
 }
 
 .detail-section-title {
-  color: #2a2a2a;
-  font-size: 1.8rem;
+  color: #2C3E50;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  font-weight: 700;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #F1C40F;
 }
 
 .detail-description {
-  color: #444;
+  color: #555;
   line-height: 1.8;
   font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .activity-grid,
 .restaurant-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
+
+
+.activity-card,
+.restaurant-card {
+  background: #F9F9F9;
+  border-radius: 12px;
+  padding: 1.8rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.activity-card:hover,
+.restaurant-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+} 
 
 @media (max-width: 768px) {
   .detail-hero {
@@ -752,8 +863,6 @@ object-fit: cover;
 }
 
 /* itineraryDetailsAdmin */
-
-/* Layout Base */
 .admin-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -769,7 +878,6 @@ object-fit: cover;
   text-decoration: none;
 }
 
-/* Form Styling */
 .admin-form {
   background: white;
   border-radius: 10px;
@@ -779,6 +887,8 @@ object-fit: cover;
 
 .form-hero {
   position: relative;
+  width: 100%;
+  height: 500px;
   margin-bottom: 2rem;
   border-radius: 8px;
   overflow: hidden;
@@ -786,13 +896,14 @@ object-fit: cover;
 
 .image-upload-label {
   display: block;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
 }
 
 .hero-img, .img-placeholder {
   width: 100%;
-  height: 350px;
-  object-fit: cover;
+  height: 100%;
 }
 
 .img-placeholder {
@@ -838,7 +949,6 @@ object-fit: cover;
   display: none;
 }
 
-/* Sezioni Form */
 .form-section {
   margin-bottom: 2rem;
   padding: 1.5rem;
@@ -863,7 +973,6 @@ object-fit: cover;
   min-height: 150px;
 }
 
-/* Card Styling */
 .activities-grid, .restaurants-grid {
   display: grid;
   gap: 1.5rem;

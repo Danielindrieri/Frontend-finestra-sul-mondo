@@ -42,6 +42,15 @@ export const useItinerarioForm = () => {
     }));
   };
 
+  const removeItemFromList = (listName, indexToRemove) => {
+    setForm(prev => ({
+      ...prev,
+      [listName]: prev[listName].filter((_, i) => i !== indexToRemove)
+    }));
+  };
+
+  
+
   // Gestione upload immagini
   const uploadImage = (e) => {
     setForm((prev) => ({ ...prev, immagini: [...e.target.files] }));
@@ -153,8 +162,10 @@ export const useItinerarioForm = () => {
     updateField,
     updateList,
     addItemToList,
+    removeItemFromList,
     uploadImage,
     submit,
     reset,
+
   };
 };
